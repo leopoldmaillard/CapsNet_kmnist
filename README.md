@@ -1,4 +1,4 @@
-# CapsNet_kmninst
+# CapsNet_kmnist
 Capsule Neural Network paper understanding & implementation.
 
 Paper : https://arxiv.org/abs/1710.09829
