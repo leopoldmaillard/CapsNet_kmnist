@@ -16,10 +16,11 @@ The dataset chosen to illustrate our work is [Kuzushiji-MNIST](https://github.co
 
 Unlike other datasets like Fashion-MNIST, we haven't found any other implementations involving capsules on K-MNIST, and we will be thus able to compare our CapsNet results with benchmarked models. Finally, given the nature of the dataset, capsules seem **instinctively** particularly suitable for the task.
 
-<p align="center">
-  <img src="https://github.com/rois-codh/kmnist/raw/master/images/kmnist_examples.png">
-   Kuzushiji-MNIST 10 classes
-</p>
+<div align="center">
+  <img src="https://github.com/rois-codh/kmnist/raw/master/images/kmnist_examples.png" width="450">
+</div>
+<div align="center">Kuzushiji-MNIST 10 classes</div>
+
 
 ### Content
 
