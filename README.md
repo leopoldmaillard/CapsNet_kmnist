@@ -1,4 +1,7 @@
-# CapsNet_kmnist
+# Capsule Neural Network
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/leopoldmaillard/CapsNet_kmnist/blob/main/capsnet_kmnist.ipynb)
+
 Capsule Neural Network paper understanding & implementation.
 
 Paper : https://arxiv.org/abs/1710.09829
