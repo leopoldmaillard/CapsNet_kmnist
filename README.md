@@ -37,13 +37,15 @@ Unlike many Deep Learning models, there is no built-in functions in libraries li
 
 In particular, ```capsulelayers.py```provides the CapsuleLayer class. A Capsule Layer is similar to a Dense Layer, except that it outputs a **vector** instead of a scalar. This is also where the inner-loop for **routing** mechanism between capsules takes place. It basically ensures that a capsule sends its output vector to higher level capsule, taking into account how big the scalar product between the two vectors is. Finally, since the length of the output vector should represent the probability that the feature represented by the capsule is included in the input, Capsule Layer uses **squashing** activation so that short vector tends to 0-length and long vectors tends to 1-length.
 
+In addition to the model itself, ```capsnet_kmnist.py``` contains the definition of the **margin loss** that ensures that the capsules for each Hiragana have a long instantiation vector only and only if the true label of the input corresponds to this symbol. Latter, this loss will be used alongside a reconstruction loss (Mean Square Error). Indeed, a decoder made of 3 dense fully-connected layers, takes as input the instanciation vector that outputs the Hiragana capsule in order to reconstruct the input image. The MSE between the actual image and the reconstructed one is then being minimized. Note that this additional loss is used as **regulariation** and shouldn't take too much importance compared to the margin loss. It however helps the capsule to encode the instanciation parameters of the input Japanese symbol.
+
 As in the paper, we will use the **Adam Optimizer** with its TensorFlow default parameters.
 
 ## Training Process
 
-After preparing the data and building the model, we started training it. Training a CapsNet is a challenge in several ways :
+After preparing the data and building the model, we started training it. Training a CapsNet is challenging in several ways :
 - It involves new **tunable hyper-parameters** (number of routing iterations, number of capsules, importance of the reconstruction loss used for regularization) in addition to the *traditionnal* hyper-parameters (learning rate, batch size, number of training epochs).
-- CapsNet's numerous trainable parameters and routing mechanism (that adds a for-loop in the process) make it a model that **takes time** to train, even on low resolution images and training on GPU doesn't seem to be an option.
+- CapsNet's numerous trainable parameters and routing mechanism (that adds a for-loop in the process) make it a model that **takes time** to train, even on low resolution images. Thus, training on GPU doesn't seem to be an option.
 
 ## Results
 
