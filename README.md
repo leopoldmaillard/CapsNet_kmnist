@@ -22,13 +22,31 @@ Unlike other datasets like Fashion-MNIST, we haven't found any other implementat
 <div align="center">Kuzushiji-MNIST 10 classes</div>
 
 
-### Content
+### Content 
+
+This repositorty contains :
+- A Capsule's original paper explanation in French.
+- Kuzushiji-MNIST data (~20mb only).
+- Capsule Layer and CapsNet TF2 implementation.
+- An IPython Notebook for training the model (this can be executed in Google Colab).
 
 ## Implementation details
 
+Unlike many Deep Learning models, there is no built-in functions in libraries like TensorFlow or Pytorch to sequentially build a CapsNet architecture. Thus, our model implementation relies on [Xifeng Guo's repository](https://github.com/XifengGuo/CapsNet-Keras) which provides the lower-level TensorFlow 2 code needed to build the model. 
+)
+In particular, ```capsulelayers.py```provides the CapsuleLayer class. A Capsule Layer is similar to a Dense Layer, except that it outputs a **vector** instead of a scalar. This is also where the inner-loop for **routing** mechanism between capsules takes place. It basically ensures that a capsule sends its output vector to higher level capsule, taking into account how big the scalar product between the two vectors is. Finally, since the length of the output vector should represent the probability that the feature represented by the capsule is included in the input, Capsule Layer uses **squashing** activation so that short vector tends to 0-length and long vectors tends to 1-length.
+
+As in the paper, we will use the Adam Optimizer with its TensorFlow default parameters.
+
 ## Training Process
 
+After preparing the data and building the model, we started training it. Training a CapsNet is a challenge in several ways :
+- It involves new tunable hyper-parameters (number of routing iterations, number of capsules, importance of the reconstruction loss used for regularization) in addition to the *traditionnal* hyper-parameters (learning rate, batch size, number of training epochs).
+- CapsNet's numerous trainable parameters and routing mechanism (that adds a for-loop in the process) make it a model that takes time to train, even on low resolution images and training on GPU doesn't seem to be an option.
+
 ## Results
+
+
 
 ## Entraînement du 11/04/2021
 
