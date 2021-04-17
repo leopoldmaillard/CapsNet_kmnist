@@ -5,7 +5,7 @@
 
 By [Lucie Clair](https://github.com/LucieClair) & [Léopold Maillard](https://github.com/leopoldmaillard), as part of the INSA Rouen's Deep Learning course project, 2021.
 
-This repository provides understanding, implementation and full training process for NeurIPS 2017 paper [*"Dynamic Routing Between Capsules"*](https://arxiv.org/abs/1710.09829) by Geoffrey E. Hinton, Sara Sabour & Nicholas Frosst.
+This repository provides understanding, implementation and a detailed training process for NeurIPS 2017 paper [*"Dynamic Routing Between Capsules"*](https://arxiv.org/abs/1710.09829) by Geoffrey E. Hinton, Sara Sabour & Nicholas Frosst.
 
 ## About this work
 
@@ -46,6 +46,16 @@ As in the paper, we will use the **Adam Optimizer** with its TensorFlow default 
 After preparing the data and building the model, we started training it. Training a CapsNet is challenging in several ways :
 - It involves new **tunable hyper-parameters** (number of routing iterations, number of capsules, importance of the reconstruction loss used for regularization) in addition to the *traditionnal* hyper-parameters (learning rate, batch size, number of training epochs).
 - CapsNet's numerous trainable parameters and routing mechanism (that adds a for-loop in the process) make it a model that **takes time** to train, even on low resolution images. Thus, training on GPU doesn't seem to be an option.
+
+### A first attempt
+
+As a first try, we started training the model for a few epochs using which seems *reasonable* values for each hyper-parameters. 
+
+| Epochs | Routing iterations | Batch Size | LR decay | Decoder loss coef. | Data augmentation |
+|:------:|--------------------|------------|----------|:------------------:|-------------------|
+|   50   |          3         |     100    |    0.9   |        0.392       |         no        |
+
+
 
 ## Results
 
