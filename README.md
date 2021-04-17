@@ -52,7 +52,7 @@ After preparing the data and building the model, we started training it. Trainin
 As a first try, we started training the model for a few epochs using which seems *reasonable* values for each hyper-parameters. 
 
 | Epochs | Routing iterations | Batch Size | LR decay | Decoder loss coef. | Data augmentation |
-|:------:|--------------------|------------|----------|:------------------:|-------------------|
+|:------:|:------------------:|:----------:|:--------:|:------------------:|:-----------------:|
 |   50   |          3         |     100    |    0.9   |        0.392       |         no        |
 
 
