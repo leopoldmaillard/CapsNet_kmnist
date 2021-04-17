@@ -1,6 +1,7 @@
 # Capsule Neural Network
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/leopoldmaillard/CapsNet_kmnist/blob/main/capsnet_kmnist.ipynb)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.0-brightgreen)
 
 By [Lucie Clair](https://github.com/LucieClair) & [Léopold Maillard](https://github.com/leopoldmaillard), as part of the INSA Rouen's Deep Learning course project, 2021.
 
