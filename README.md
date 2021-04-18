@@ -26,7 +26,7 @@ Unlike other datasets like Fashion-MNIST, we haven't found any other implementat
 ### Content 
 
 This repositorty contains :
-- A Capsule's original paper explanation in French.
+- A Capsule's original paper explanation and review in French.
 - Kuzushiji-MNIST data (~20mb only).
 - Capsule Layer and CapsNet TF2 implementation.
 - An IPython Notebook for training the model (this can be executed in Google Colab).
@@ -55,9 +55,28 @@ As a first try, we started training the model for a few epochs using which seems
 |:------:|:------------------:|:----------:|:--------:|:------------------:|:-----------------:|
 |   10   |          3         |     100    |    0.9   |        0.392       |         no        |
 
+Here is a plot of our results (accuracy plot begins at epoch 2 for better precision) :
 
+ ![training1-loss](img/training1-loss.png) ![training1-acc](img/training1-acc.png)
+
+- Training accuracy : 99.94%
+- Validation accuracy : 95.17%
+
+These are promising results. Indeed, we can see that the loss is correctly decreasing over time, which means that the model does learn from the training data. The model also generalizes new data but we can see that our main concern will be to deal with **overfitting** since there is a significant gap between the train and validation accuracies. Here are a few ideas in order to face this problem :
+
+- Use data augmentation.
+- Add dropout to the dense layers (although it hasn't been done in the original paper).
+- Train on more epochs and use early stopping.
+
+According to Hinton's paper, increasing the number of routing iterations seems to increase the network's trend to overfit, that's why we shall not change this hyper-parameter.
+
+This training process took 13min/epoch to train on CPU, that's why we'll use CRIANN's ( Centre Régional Informatique et d'Applications Numériques de Normandie) computational power for further training.
 
 ## Results
+
+
+
+
 
 
 
