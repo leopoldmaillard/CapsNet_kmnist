@@ -72,7 +72,7 @@ According to Hinton's paper, increasing the number of routing iterations seems t
 
 This training process took 13min/epoch to train on CPU, that's why we'll use CRIANN's ( Centre Régional Informatique et d'Applications Numériques de Normandie) computational power for further training.
 
-### About CRIANN remote training process
+### About CRIANN remote training set-up
 
 #### Ressources
 
