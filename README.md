@@ -37,7 +37,7 @@ Unlike many Deep Learning models, there is no built-in functions in libraries li
 
 In particular, ```capsulelayers.py```provides the CapsuleLayer class. A Capsule Layer is similar to a Dense Layer, except that it outputs a **vector** instead of a scalar. This is also where the inner-loop for **routing** mechanism between capsules takes place. It basically ensures that a capsule sends its output vector to higher level capsule, taking into account how big the scalar product between the two vectors is. Finally, since the length of the output vector should represent the probability that the feature represented by the capsule is included in the input, Capsule Layer uses **squashing** activation so that short vector tends to 0-length and long vectors tends to 1-length.
 
-In addition to the model itself, ```capsnet_kmnist.py``` contains the definition of the **margin loss** that ensures that the capsules for each Hiragana have a long instantiation vector only and only if the true label of the input corresponds to this symbol. Latter, this loss will be used alongside a reconstruction loss (Mean Square Error). Indeed, a decoder made of 3 dense fully-connected layers, takes as input the instanciation vector that outputs the Hiragana capsule in order to reconstruct the input image. The MSE between the actual image and the reconstructed one is then being minimized. Note that this additional loss is used as **regularization** and shouldn't take too much importance compared to the margin loss. It however helps the capsule to encode the instanciation parameters of the input Japanese symbol.
+In addition to the model itself, ```capsnet_kmnist.py``` contains the definition of the **margin loss** that ensures that the capsules for each Hiragana have a long instantiation vector if and only if the true label of the input corresponds to this symbol. Latter, this loss will be used alongside a reconstruction loss (Mean Square Error). Indeed, a decoder made of 3 dense fully-connected layers, takes as input the instanciation vector that outputs the Hiragana capsule in order to reconstruct the input image. The MSE between the actual image and the reconstructed one is then being minimized. Note that this additional loss is used as **regularization** and shouldn't take too much importance compared to the margin loss. It however helps the capsule to encode the instanciation parameters of the input Japanese symbol.
 
 As in the paper, we will use the **Adam Optimizer** with its TensorFlow default parameters.
 
@@ -71,6 +71,21 @@ These are promising results. Indeed, we can see that the loss is correctly decre
 According to Hinton's paper, increasing the number of routing iterations seems to increase the network's trend to overfit, that's why we shall not change this hyper-parameter.
 
 This training process took 13min/epoch to train on CPU, that's why we'll use CRIANN's ( Centre Régional Informatique et d'Applications Numériques de Normandie) computational power for further training.
+
+### About CRIANN remote training process
+
+#### Ressources
+
+CRIANN gave us access to their GPU clusters in order to train our model on CUDA-enabled devices. Each node is equipped with up to 4 GPUs, 90gb of RAM and 40 CPU cores. Such configuration enabled us to adjust our parameters by launching several longer training phases.
+
+#### Script submission
+
+After establishing an SSH connection, we must submit a *job* by executing a SLURM script that specifies, in particular :
+- the environment to load.
+- the ressources to use (number of GPU(s), max training time...).
+- the .py file to execute as well as a checkpoint directory to save the model's weights.
+
+See ```training_script.sl```.
 
 ## Results
 
