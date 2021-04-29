@@ -30,10 +30,10 @@
 #SBATCH --error %J.err
 
 #Loading the module
-module load python3/3.7.9
+module load conda3/1907
 
 # Activate conda to access env with keras
-# conda activate DL-py3gpu
+conda activate dl-tf2
 
 # Creating a directory to save the training weights
 mkdir callbacks
