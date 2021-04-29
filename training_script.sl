@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Which partition to use
-SBATCH --partition insa
-
 # Created from: slurm submission script, serial job
 # support@criann.fr
 
@@ -16,18 +13,21 @@ SBATCH --partition insa
 #SBATCH --cpus-per-task=10
 
 # Enable the mailing for the start of the experiments
-SBATCH --mail-type ALL
-SBATCH --mail-user leopold.maillard@insa-rouen.fr
+#SBATCH --mail-type ALL
+#SBATCH --mail-user leopold.maillard@insa-rouen.fr
+
+# Which partition to use
+#SBATCH --partition insa
 
 # Number of gpu(s) to use
-SBATCH --gres gpu:1
+#SBATCH --gres gpu:1
 
 # Number of nodes to use
-SBATCH --nodes 1
+#SBATCH --nodes 1
 
 # Log files (%J is a variable for the job id)
-SBATCH --output %J.out
-SBATCH --error %J.err
+#SBATCH --output %J.out
+#SBATCH --error %J.err
 
 #Loading the module
 module load conda3/1907
@@ -36,10 +36,10 @@ module load conda3/1907
 conda activate DL-py3gpu
 
 # Creating a directory to save the training weights
-mkdir callbacks
+mkdir checkpoints
 
 # Define the repository where the trained weights will be stored
-# This variable is used in the py script 
+# This variable is used in the script mnist.py
 # export LOCAL_WORK_DIR=checkpoints
 
 # Start the calculation
