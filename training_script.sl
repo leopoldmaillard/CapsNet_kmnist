@@ -36,7 +36,7 @@ module load conda3/1907
 conda activate DL-py3gpu
 
 # Creating a directory to save the training weights
-mkdir checkpoints
+mkdir callbacks
 
 # Define the repository where the trained weights will be stored
 # This variable is used in the script mnist.py
