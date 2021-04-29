@@ -33,7 +33,7 @@
 module load conda3/1907
 
 # Activate conda to access env with keras
-conda activate dl-tf2
+conda activate DL-tf2
 
 # Creating a directory to save the training weights
 mkdir callbacks
