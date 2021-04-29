@@ -30,7 +30,7 @@
 #SBATCH --error %J.err
 
 #Loading the module
-module load conda3/1907
+module load python3/3.7.9
 
 # Activate conda to access env with keras
 # conda activate DL-py3gpu
