@@ -33,7 +33,7 @@
 module load conda3/1907
 
 # Activate conda to access env with keras
-conda activate DL-py3gpu
+# conda activate DL-py3gpu
 
 # Creating a directory to save the training weights
 mkdir callbacks
