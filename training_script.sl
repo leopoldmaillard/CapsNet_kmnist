@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Which partition to use
+SBATCH --partition insa
+
 # Created from: slurm submission script, serial job
 # support@criann.fr
 
@@ -15,9 +18,6 @@
 # Enable the mailing for the start of the experiments
 SBATCH --mail-type ALL
 SBATCH --mail-user leopold.maillard@insa-rouen.fr
-
-# Which partition to use
-#SBATCH --partition insa
 
 # Number of gpu(s) to use
 SBATCH --gres gpu:1
