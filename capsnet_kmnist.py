@@ -24,7 +24,7 @@ from capsulelayers import CapsuleLayer, PrimaryCap, Length, Mask
 # All hyperparameters here
 
 epochs = 100
-batch_size = 128
+batch_size = 100
 learning_rate = 0.001
 decay = 0.9 # to decrease learning rate at each epoch
 lam_recon = 0.392 # decoder loss coefficient
