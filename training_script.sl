@@ -3,8 +3,8 @@
 # Created from: slurm submission script, serial job
 # support@criann.fr
 
-# Max time the script will run (here 30 mins)
-#SBATCH --time 00:30:00
+# Max time the script will run (here 3 hours)
+#SBATCH --time 03:00:00
 
 # RAM to use (Mo)
 #SBATCH --mem 10000
