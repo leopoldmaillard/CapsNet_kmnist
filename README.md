@@ -87,6 +87,26 @@ After establishing an SSH connection, we must submit a *job* by executing a SLUR
 
 See ```training_script.sl```.
 
+### Training iterations - hyperparameters tuning
+
+We started by training the model for more epochs, while keeping the same hyperparameters. This enabled us to confirm our first intuition about overfitting.
+
+| Epochs | Routing iterations | Batch Size | LR decay | Decoder loss coef. | Data augmentation |
+|:------:|:------------------:|:----------:|:--------:|:------------------:|:-----------------:|
+|   50   |          3         |     100    |    0.9   |        0.392       |         no        |
+
+ ![training2-loss](img/training2-loss.png) ![training2-acc](img/training2-acc.png)
+
+- Training accuracy : 99.99%
+- Validation accuracy : 95.34%
+
+#### Data augmentation
+
+In order to improve the generalization ability of our model, we used data augmentation to synthetize more training data. Given the nature of the dataset, we had to consider carefully which transformations to perform. Indeed, *flipping* and *rotate* Japanese symbols wouldn't make much sense. However, we went with :
+- Pixels shifting (this is performed in Hinton's paper on MNIST).
+- Cutout (T. DeVries, 2017), which should help with regularization by randomly obfuscating regions of the training images.
+
+
 ## Results
 
 
