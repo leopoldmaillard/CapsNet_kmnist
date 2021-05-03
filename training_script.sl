@@ -30,16 +30,13 @@
 #SBATCH --error %J.err
 
 #Loading the module
-module load conda3/1907
-
-# Activate conda to access env with keras
-conda activate DL-tf2
+module load python3-DL/3.8.5
 
 # Creating a directory to save the training weights
 mkdir callbacks
 
 # Define the repository where the trained weights will be stored
-# This variable is used in the script mnist.py
+# This variable is used in the script
 # export LOCAL_WORK_DIR=checkpoints
 
 # Start the calculation
