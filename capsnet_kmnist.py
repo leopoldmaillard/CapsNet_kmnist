@@ -30,6 +30,7 @@ decay = 0.9 # to decrease learning rate at each epoch
 lam_recon = 0.392 # decoder loss coefficient
 n_routings = 3 # number of routing by agreement iterations
 n_class = 10
+data_augmentation = True
 
 
 def CapsNet(input_shape, n_class, routings, batch_size):
@@ -78,9 +79,36 @@ def CapsNet(input_shape, n_class, routings, batch_size):
 
 # a custom loss is used for training
 def margin_loss(y_true, y_pred):
-    loss = y_true * tf.square(tf.maximum(0., 0.9 - y_pred)) +            0.5 * (1 - y_true) * tf.square(tf.maximum(0., y_pred - 0.1))
-    
+     loss = y_true * tf.square(tf.maximum(0., 0.9 - y_pred)) + \
+        0.5 * (1 - y_true) * tf.square(tf.maximum(0., y_pred - 0.1))
+
     return tf.reduce_mean(tf.reduce_sum(loss, 1))
+
+# Data augmentation
+from tensorflow.keras.preprocessing.image import ImageDataGenerator 
+
+def cutout(image):
+    size = 6
+    h, w = image.shape[0], image.shape[1]
+    cut_image = image
+    y = np.random.randint(h)
+    x = np.random.randint(w)
+    y1 = np.clip(y - size // 2, 0, h)
+    y2 = np.clip(y + size // 2, 0, h)
+    x1 = np.clip(x - size // 2, 0, w)
+    x2 = np.clip(x + size // 2, 0, w)
+    cut_image[y1:y2,x1:x2,:] = 0
+    
+    return cut_image
+
+def train_generator(x, y, batch_size):
+        train_datagen = ImageDataGenerator(width_shift_range = 0.1,
+                                           height_shift_range = 0.1,
+                                           preprocessing_function = cutout)
+        generator = train_datagen.flow(x, y, batch_size=batch_size)
+        while 1:
+            x_batch, y_batch = generator.next()
+            yield (x_batch, y_batch), (y_batch, x_batch)
 
 # log file
 log = tf.keras.callbacks.CSVLogger('callbacks/log.csv')
@@ -102,8 +130,15 @@ model.compile(optimizer = tf.keras.optimizers.Adam(lr = learning_rate), loss=[ma
               loss_weights=[1, lam_recon], metrics={'capsnet': 'accuracy'})
 
 
-history = model.fit([X_train, Y_train], [Y_train, X_train], batch_size = batch_size, epochs = epochs,
-              validation_data=([X_test, Y_test], [Y_test, X_test]), callbacks = [log, checkpoint, lr_decay])
+if(data_augmentation):
+    history = model.fit(train_generator(X_train, Y_train, batch_size),
+              steps_per_epoch=int(Y_train.shape[0] / batch_size),
+              epochs = epochs,
+              validation_data=([X_test, Y_test], [Y_test, X_test]), batch_size = batch_size,
+              callbacks = [log, checkpoint, lr_decay])
+else :
+    history = model.fit([X_train, Y_train], [Y_train, X_train], batch_size = batch_size, epochs = epochs,
+                  validation_data=([X_test, Y_test], [Y_test, X_test]), callbacks = [log, checkpoint, lr_decay])
 
 
 plt.plot(history.history['capsnet_loss'])
