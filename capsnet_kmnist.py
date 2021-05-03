@@ -79,7 +79,7 @@ def CapsNet(input_shape, n_class, routings, batch_size):
 
 # a custom loss is used for training
 def margin_loss(y_true, y_pred):
-     loss = y_true * tf.square(tf.maximum(0., 0.9 - y_pred)) + \
+    loss = y_true * tf.square(tf.maximum(0., 0.9 - y_pred)) + \
         0.5 * (1 - y_true) * tf.square(tf.maximum(0., y_pred - 0.1))
 
     return tf.reduce_mean(tf.reduce_sum(loss, 1))
