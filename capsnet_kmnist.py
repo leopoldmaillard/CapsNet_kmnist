@@ -26,8 +26,8 @@ from capsulelayers import CapsuleLayer, PrimaryCap, Length, Mask
 epochs = 100
 batch_size = 100
 learning_rate = 0.001
-decay = 0.9 # to decrease learning rate at each epoch
-lam_recon = 0.392 # decoder loss coefficient
+decay = 0.95 # to decrease learning rate at each epoch
+lam_recon = 0.784 # decoder loss coefficient
 n_routings = 3 # number of routing by agreement iterations
 n_class = 10
 data_augmentation = True
