@@ -29,7 +29,7 @@ This repositorty contains :
 - A Capsule's original paper explanation and review in French.
 - Kuzushiji-MNIST data (~20mb only).
 - Capsule Layer and CapsNet TF2 implementation.
-- An IPython Notebook for training the model (this can be executed in Google Colab).
+- An IPython Notebook for building and training the model (this can be executed in Google Colab).
 
 ## Implementation details
 
@@ -134,6 +134,7 @@ As expected, overfitting has been further reduced.
 
 ## Results
 
+Kuzushiji-MNIST repository provides a 10,000 images evaluation dataset that enables fair performance comparison with other ML models. We can thus see how our Capsnet compares to models listed in the [Benchmark section](https://github.com/rois-codh/kmnist/blob/master/README.md#benchmarks--results-) of the repository.
 
 
 
