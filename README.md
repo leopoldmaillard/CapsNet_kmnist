@@ -15,7 +15,7 @@ This repository provides understanding, implementation and a detailed training p
 
 The dataset chosen to illustrate our work is [Kuzushiji-MNIST](https://github.com/rois-codh/kmnist), which proposes a more challenging alternative to MNIST. Indeed, most of the recent Deep Learning models achieve more than 99.5% accuracy on MNIST, so it can be interesting to evaluate our model on more challenging datasets. K-MNIST consists of 70,000 images (28x28, grayscale) in 10 classes, one for each row of the Japanese Hiragana. 
 
-Unlike other datasets like Fashion-MNIST, we haven't found any other implementations involving capsules on K-MNIST, and we will be thus able to compare our CapsNet results with benchmarked models. Finally, given the nature of the dataset, capsules seem **instinctively** particularly suitable for the task.
+Unlike other datasets like Fashion-MNIST, we haven't found any other implementations involving capsules on K-MNIST, and we will be thus able to compare our CapsNet results with benchmarked architectures. Finally, given the nature of the dataset, capsules seem **instinctively** particularly suitable for the task.
 
 <div align="center">
   <img src="https://github.com/rois-codh/kmnist/raw/master/images/kmnist_examples.png">
@@ -116,6 +116,21 @@ In order to improve the generalization ability of our model, we used data augmen
 - Validation accuracy : 97.49%
 
 We can see that overfitting has been successfully reduced and that the overall performance has improved.
+
+#### Reconstruction regularization tuning
+
+Finally, we recalled that the decoder was used as a regularizer. We scaled up its associated reconstruction loss contribution, while keeping the same data augmentation routine, and got the following results :
+
+| Epochs | Routing iterations | Batch Size | LR decay | Decoder loss coef. | Data augmentation |
+|:------:|:------------------:|:----------:|:--------:|:------------------:|:-----------------:|
+|  100   |          3         |     100    |   0.95   |        0.784       | Shifting + Cutout |
+
+![training4-loss](img/training4-loss.png) ![training4-acc](img/training4-acc.png)
+
+- Training accuracy : 99.83%
+- Validation accuracy : **98.45%**
+
+As expected, overfitting has been further reduced.
 
 ## Results
 
