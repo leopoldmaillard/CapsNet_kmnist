@@ -102,10 +102,20 @@ We started by training the model for more epochs, while keeping the same hyperpa
 
 #### Data augmentation
 
-In order to improve the generalization ability of our model, we used data augmentation to synthetize more training data. Given the nature of the dataset, we had to consider carefully which transformations to perform. Indeed, *flipping* and *rotate* Japanese symbols wouldn't make much sense. However, we went with :
+In order to improve the generalization ability of our model, we used data augmentation to synthetize more training data. Given the nature of the dataset, we had to consider carefully which transformations to perform. Indeed, *flipping* and *random cropping* Japanese symbols wouldn't make much sense. However, we went with :
 - Pixels shifting (this is performed in Hinton's paper on MNIST).
 - Cutout (T. DeVries, 2017), which should help with regularization by randomly obfuscating regions of the training images.
 
+| Epochs | Routing iterations | Batch Size | LR decay | Decoder loss coef. | Data augmentation |
+|:------:|:------------------:|:----------:|:--------:|:------------------:|:-----------------:|
+|  100   |          3         |     100    |    0.9   |        0.392       | Shifting + Cutout |
+
+ ![training3-loss](img/training3-loss.png) ![training3-acc](img/training3-acc.png)
+
+- Training accuracy : 98.99%
+- Validation accuracy : 97.49%
+
+We can see that overfitting has been successfully reduced and that the overall performance has improved.
 
 ## Results
 
