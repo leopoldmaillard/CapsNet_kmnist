@@ -136,8 +136,13 @@ As expected, overfitting has been further reduced.
 
 Kuzushiji-MNIST repository provides a 10,000 images evaluation dataset that enables fair performance comparison with other ML models. We can thus see how our Capsnet compares to models listed in the [Benchmark section](https://github.com/rois-codh/kmnist/blob/master/README.md#benchmarks--results-) of the repository.
 
-
-
+|            Model            | k-MNIST Test accuracy |
+| :-------------------------: | :-------------------: |
+|       Tuned SVM (RBF)       |        92.82%         |
+|      Keras Simple CNN       |        94.63%         |
+|       PreActResNet-18       |        97.82%         |
+|         **CapsNet**         |      **98.45%**       |
+| Ensemble of ResNet-18 + VGG |        98.90%         |
 
 
 
