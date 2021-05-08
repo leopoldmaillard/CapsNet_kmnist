@@ -150,10 +150,9 @@ Kuzushiji-MNIST repository provides a 10,000 images evaluation dataset that enab
 
 We used the trained decoder of the Capsule Network in order to reconstruct an input symbol from its 16-dimensional output vector.
 
-<div align="center">
-  <img src="img/recons.png">
-</div>
-<div align="center">36 input symbols and their associated reconstructions obtained by passing their CapsNet output vector through the trained decoder.</div>
+![recons](img/recons.png)
+
+Here are 36 input symbols and their associated reconstructions obtained by passing their CapsNet output vector through the trained decoder.
 
 ## Entraînement du 11/04/2021
 
