@@ -152,22 +152,18 @@ We used the trained decoder of the Capsule Network in order to reconstruct an in
 
 ![recons](img/recons.png)
 
-Here are 36 input symbols and their associated reconstructions obtained by passing their CapsNet output vector through the trained decoder.
+Here are 36 input symbols and their associated reconstructions obtained by passing their CapsNet output vector through the trained decoder. These results are satisfactory, each Hiragana is well recognizable. They however highlight the main **limitation** of this model : we can see that the most complex objects and their details aren't as well defined by the output capsule as the simpler ones. 
 
-## Entraînement du 11/04/2021
+### Potential issues & improvements
 
-- Plus de 8 millions de paramètres entraînables, 13 min / epoch sur mon CPU.
-- 80s / epoch sur un GPU Google Colab
-- Sur 50 epochs, 3 rooting steps : Train Accuracy : 99.45%, Val Accuracy : 93.58
-- What to do next :
-  - Data augmentation (va aider pour l'overfit)
-  - Dropout ?
-  - Hyper-parameters tuning : n_routing, batch_size
-  - Loss sur une trend descendante : entraîner sur + d'epoch
-- Faire test sur le eval model
-- Afficher les reconstructions
+- During our experiments, we realized that sometimes it took many more training steps before the loss begins to decrease than others. CapsNet might be sensitive to the random weight initialization.
+- We can see that the validation accuracy is most of the time higher than the training one **at epoch 1**. This can be explained by the fact that TensorFlow compute the training accuracy **during** training, so the classification for the first mini-batches is almost random. Then, the model that has learned during this first epoch is evaluated on the validation set.
+- Although it hasn't been done in Hinton's paper, using *Cutout* seems to have helped and it could be interesting to apply it on other datasets as well.
 
-Explication d'Aurélien Géron : https://www.youtube.com/watch?v=pPN8d0E3900
+## References
 
-Article Medium : https://towardsdatascience.com/capsule-networks-the-new-deep-learning-network-bd917e6818e8
+Sara Sabour, Nicholas Frosst, Geoffrey Hinton. *Dynamic routing between Capsules*. Conference on Neural Information Processing Systems (2017).
 
+Clanuwat et al. *Deep Learning for Classical Japanese Literature*. Neural Information Processing Systems 2018 Workshop on Machine Learning for Creativity and Design.
+
+Aurélien Géron. *Capsule Networks (CapsNets) – Tutorial*. [YouTube Video](https://youtu.be/pPN8d0E3900).
