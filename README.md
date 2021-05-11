@@ -157,7 +157,7 @@ Here are 36 input symbols and their associated reconstructions obtained by passi
 ### Potential issues & improvements
 
 - During our experiments, we realized that sometimes it took many more training steps before the loss begins to decrease than others. CapsNet might be sensitive to the random weight initialization.
-- We can see that the validation accuracy is most of the time higher than the training one **at epoch 1**. This can be explained by the fact that TensorFlow compute the training accuracy **during** training, so the classification for the first mini-batches is almost random. Then, the model that has learned during this first epoch is evaluated on the validation set.
+- We can see that the validation accuracy is most of the time higher than the training one **at epoch 1**. This can be explained by the fact that TensorFlow compute the training accuracy **during** training, so the classification for the first mini-batches is almost random. Then, the model that has learnt during this first epoch is evaluated on the validation set.
 - Although it hasn't been done in Hinton's paper, using *Cutout* seems to have helped and it could be interesting to apply it on other datasets as well.
 
 ## References
