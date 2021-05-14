@@ -154,6 +154,12 @@ We used the trained decoder of the Capsule Network in order to reconstruct an in
 
 Here are 36 input symbols and their associated reconstructions obtained by passing their CapsNet output vector through the trained decoder. These results are satisfactory, each Hiragana is well recognizable. They however highlight the main **limitation** of this model : we can see that the most complex objects and their details aren't as well defined by the output capsule as the simpler ones. 
 
+### Perturbations visualization
+
+In order to get a sens of what the dimensions of the 16-dimensional output vector represent, we generated various perturbations on each of them. As in the paper, we tweaked one dimension value at a time, by intervals of 0.05 in the range [-0.25, 0.25]. Here is a representation of the associated reconstructions for some Hiraganas :
+
+ ![perturb2](img/perturbations1.png) ![perturb2](img/perturbations2.png)
+
 ### Potential issues & improvements
 
 - During our experiments, we realized that sometimes it took many more training steps before the loss begins to decrease than others. CapsNet might be sensitive to the random weight initialization.
