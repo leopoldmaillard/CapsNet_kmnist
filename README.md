@@ -159,6 +159,8 @@ Here are 36 input symbols and their associated reconstructions obtained by passi
 In order to get a sens of what the dimensions of the 16-dimensional output vector represent, we generated various perturbations on each of them. As in the paper, we tweaked one dimension value at a time, by intervals of 0.05 in the range [-0.25, 0.25]. Here is a representation of the associated reconstructions for some Hiraganas :
 
  ![perturb2](img/perturbations1.png) ![perturb2](img/perturbations2.png)
+ 
+ We can see that each dimension corresponds to a given visual feature : thickness, width, etc. of the symbol. Some of them can be more complex : curviness of a specific part of the symbol etc.
 
 ### Potential issues & improvements
 
