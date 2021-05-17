@@ -11,7 +11,7 @@ This repository provides understanding, implementation and a detailed training p
 
 ### Motivation
 
-A Capsule Neural Network differs from a regular ConvNet by encoding features in higher dimension entities that will communicate to take into account the spatial disposition of the elements of an image. 
+A Capsule Neural Network differs from a regular ConvNet by encoding features in **higher dimension entities** that will communicate to take into account the spatial disposition of the elements of an image. 
 
 ### Dataset
 
