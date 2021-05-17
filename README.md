@@ -11,6 +11,8 @@ This repository provides understanding, implementation and a detailed training p
 
 ### Motivation
 
+A Capsule Neural Network differs from a regular ConvNet by encoding features in higher dimension entities that will communicate to take into account the spatial disposition of the elements of an image. 
+
 ### Dataset
 
 The dataset chosen to illustrate our work is [Kuzushiji-MNIST](https://github.com/rois-codh/kmnist), which proposes a more challenging alternative to MNIST. Indeed, most of the recent Deep Learning models achieve more than 99.5% accuracy on MNIST, so it can be interesting to evaluate our model on more challenging datasets. K-MNIST consists of 70,000 images (28x28, grayscale) in 10 classes, one for each row of the Japanese Hiragana. 
