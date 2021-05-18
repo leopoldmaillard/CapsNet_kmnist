@@ -192,6 +192,7 @@ def PrimaryCap(inputs, dim_capsule, n_channels, kernel_size, strides, padding):
 """
 # The following is another way to implement primary capsule layer. This is much slower.
 # Apply Conv2D `n_channels` times and concatenate all capsules
+
 def PrimaryCap(inputs, dim_capsule, n_channels, kernel_size, strides, padding):
     outputs = []
     for _ in range(n_channels):
