@@ -72,7 +72,7 @@ These are promising results. Indeed, we can see that the loss is correctly decre
 
 According to Hinton's paper, increasing the number of routing iterations seems to increase the network's trend to overfit, that's why we shall not change this hyper-parameter.
 
-This training process took 13min/epoch to train on CPU, that's why we'll use CRIANN's ( Centre Régional Informatique et d'Applications Numériques de Normandie) computational power for further training.
+This training process took 13min/epoch to train on CPU, that's why we'll use CRIANN's (Centre Régional Informatique et d'Applications Numériques de Normandie) computational power for further training.
 
 ### About CRIANN remote training set-up
 
@@ -175,5 +175,7 @@ In order to get a sens of what the dimensions of the 16-dimensional output vecto
 Sara Sabour, Nicholas Frosst, Geoffrey Hinton. *Dynamic routing between Capsules*. Conference on Neural Information Processing Systems (2017).
 
 Clanuwat et al. *Deep Learning for Classical Japanese Literature*. Neural Information Processing Systems 2018 Workshop on Machine Learning for Creativity and Design.
+
+Terrance DeVries, Graham W. Taylor. *Improved Regularization of Convolutional Neural Networks with Cutout*. eprint arXiv:1708.04552 (2017).
 
 Aurélien Géron. *Capsule Networks (CapsNets) – Tutorial*. [YouTube Video](https://youtu.be/pPN8d0E3900).
