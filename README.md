@@ -28,10 +28,10 @@ Unlike other datasets like Fashion-MNIST, we haven't found any other implementat
 ### Content 
 
 This repositorty contains :
-- A Capsule's original paper explanation and review in French.
+- A Capsule's original paper [explanation and review](CapsNet_Review.pdf) in French.
 - Kuzushiji-MNIST data (~20mb only).
 - Capsule Layer and CapsNet TF2 implementation.
-- An IPython Notebook for building and training the model (this can be executed in Google Colab).
+- An IPython Notebook for building and training the model (this can be executed in [Google Colab](https://colab.research.google.com/github/leopoldmaillard/CapsNet_kmnist/blob/main/capsnet_kmnist.ipynb)).
 
 ## Implementation details
 
